@@ -1,4 +1,6 @@
-# Astro Landing Page
+# FitMe Landing Page
+
+Showcase all the projects related to the FitMe Web App
 
 [![Built with Astro](https://astro.badg.es/v1/built-with-astro.svg)](https://astro.build)
 
