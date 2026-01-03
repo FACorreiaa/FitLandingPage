@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="currentColor">
+  <defs>
+    <linearGradient id="fitme-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#06B6D4"/>
+      <stop offset="50%" style="stop-color:#8B5CF6"/>
+      <stop offset="100%" style="stop-color:#10B981"/>
+    </linearGradient>
+  </defs>
+  <!-- F shape with dynamic curve representing fitness/motion -->
+  <path d="M24 16h80v16H44v24h48v16H44v40H24V16z" fill="url(#fitme-gradient)"/>
+  <!-- Pulse/heart rate line accent -->
+  <path d="M52 80l8-12 8 24 8-18 8 12 12-6" stroke="url(#fitme-gradient)" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Circular motion indicator -->
+  <circle cx="100" cy="28" r="10" fill="none" stroke="url(#fitme-gradient)" stroke-width="3" stroke-dasharray="20 10"/>
+</svg>

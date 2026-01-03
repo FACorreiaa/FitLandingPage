@@ -1,0 +1,93 @@
+---
+import { Icon } from "astro-icon";
+import ContentSection from "~/components/content-section.astro";
+import type { RoadmapPhase } from "~/types";
+
+const phases: Array<RoadmapPhase> = [
+  {
+    title: "Phase 1: Foundation",
+    status: "current",
+    items: [
+      { text: "Migrate REST endpoints to gRPC", done: true },
+      { text: "Implement OpenTelemetry middleware", done: true },
+      { text: "Establish K8s deployment manifests", done: true },
+      { text: "Finalize PostgreSQL/Redis exporters", done: false },
+    ],
+  },
+  {
+    title: "Phase 2: Intelligence & Social",
+    status: "upcoming",
+    items: [
+      { text: "FitSynch AI-powered meal planning", done: false },
+      { text: "Leaderboards with gamification", done: false },
+      { text: "PT-Client bi-directional messaging", done: false },
+    ],
+  },
+  {
+    title: "Phase 3: Healthcare Integration",
+    status: "upcoming",
+    items: [
+      { text: "FHIR compliance (SMART on FHIR)", done: false },
+      { text: "HIMS & HERS telehealth partnership", done: false },
+      { text: "Predictive burnout/depression detection", done: false },
+    ],
+  },
+];
+
+const getStatusColor = (status: RoadmapPhase["status"]) => {
+  switch (status) {
+    case "complete":
+      return "border-emerald-500 bg-emerald-500/10";
+    case "current":
+      return "border-cyan-500 bg-cyan-500/10";
+    case "upcoming":
+      return "border-gray-500 bg-gray-500/10";
+  }
+};
+
+const getStatusBadge = (status: RoadmapPhase["status"]) => {
+  switch (status) {
+    case "complete":
+      return { text: "Complete", color: "bg-emerald-500" };
+    case "current":
+      return { text: "In Progress", color: "bg-cyan-500" };
+    case "upcoming":
+      return { text: "Upcoming", color: "bg-gray-600" };
+  }
+};
+---
+
+<ContentSection title="Roadmap" id="roadmap">
+  <Fragment slot="lead">
+    Our <span class="text-primary">development journey</span> from foundation to
+    <span class="text-primary">healthcare integration</span>.
+  </Fragment>
+  <div class="flex flex-col lg:flex-row gap-6 max-w-6xl w-full">
+    {
+      phases.map((phase) => {
+        const statusColor = getStatusColor(phase.status);
+        const badge = getStatusBadge(phase.status);
+        return (
+          <div class={`flex-1 rounded-xl border-2 ${statusColor} p-6`}>
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="font-bold text-lg">{phase.title}</h3>
+              <span class={`text-xs font-semibold px-2 py-1 rounded-full text-white ${badge.color}`}>
+                {badge.text}
+              </span>
+            </div>
+            <ul class="space-y-3">
+              {phase.items.map((item) => (
+                <li class="flex items-start gap-3">
+                  <div class={`mt-1 flex-shrink-0 ${item.done ? "text-emerald-400" : "text-gray-500"}`}>
+                    <Icon name={item.done ? "mdi:check-circle" : "mdi:circle-outline"} class="h-5 w-5" />
+                  </div>
+                  <span class={item.done ? "text-default" : "text-offset"}>{item.text}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        );
+      })
+    }
+  </div>
+</ContentSection>

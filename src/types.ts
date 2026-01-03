@@ -26,3 +26,24 @@ export interface ShowcaseSite {
   image: ImageMetadata;
   url: string;
 }
+
+export interface MicroserviceItem {
+  title: string;
+  description: string;
+  icon: string;
+  color: string;
+}
+
+export interface TechItem {
+  title: string;
+  icon: string;
+}
+
+export interface RoadmapPhase {
+  title: string;
+  status: 'complete' | 'current' | 'upcoming';
+  items: Array<{
+    text: string;
+    done: boolean;
+  }>;
+}

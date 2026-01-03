@@ -1,0 +1,69 @@
+---
+import { Icon } from "astro-icon";
+import ContentSection from "~/components/content-section.astro";
+import type { MicroserviceItem } from "~/types";
+
+const microservices: Array<MicroserviceItem> = [
+  {
+    title: "UserService",
+    description: "Identity management, RBAC permissions, and social graph connections.",
+    icon: "mdi:account-group",
+    color: "from-cyan-500 to-cyan-600",
+  },
+  {
+    title: "BiometricsService",
+    description: "Real-time ingestion of wearable data including HRV, Sleep, and SpO2.",
+    icon: "mdi:heart-pulse",
+    color: "from-rose-500 to-rose-600",
+  },
+  {
+    title: "AIOrchestrationService",
+    description: "Generates personalized meal plans and injury risk assessments.",
+    icon: "mdi:robot",
+    color: "from-violet-500 to-violet-600",
+  },
+  {
+    title: "MentalHealthService",
+    description: "Encrypted journaling and AI-driven mood analysis tracking.",
+    icon: "mdi:brain",
+    color: "from-amber-500 to-amber-600",
+  },
+  {
+    title: "DietService",
+    description: "Macro tracking with automated shopping list generation.",
+    icon: "mdi:food-apple",
+    color: "from-emerald-500 to-emerald-600",
+  },
+  {
+    title: "TrainerService",
+    description: "Managing PT-client relationships, scheduling, and billing.",
+    icon: "mdi:run-fast",
+    color: "from-blue-500 to-blue-600",
+  },
+];
+---
+
+<ContentSection title="Core Microservices" id="microservices">
+  <Fragment slot="lead">
+    <span class="text-primary">Six specialized services</span> working in harmony to deliver a complete wellness platform.
+    Built on <span class="text-primary">hexagonal architecture</span> for clean separation of concerns.
+  </Fragment>
+  <ul class="grid max-w-6xl grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    {
+      microservices.map(({ title, description, icon, color }) => (
+        <li class="group relative overflow-hidden rounded-xl border border-default bg-offset p-6 hover:border-primary/50 transition-colors">
+          <div class={`absolute inset-0 bg-gradient-to-br ${color} opacity-0 group-hover:opacity-5 transition-opacity`}></div>
+          <div class="relative flex flex-col items-start gap-4">
+            <div class={`flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br ${color} text-white`}>
+              <Icon name={icon} class="h-7 w-7" />
+            </div>
+            <div>
+              <p class="font-bold text-lg">{title}</p>
+              <p class="text-offset text-sm mt-1">{description}</p>
+            </div>
+          </div>
+        </li>
+      ))
+    }
+  </ul>
+</ContentSection>

@@ -1,46 +1,78 @@
 ---
-import { Picture } from "@astrojs/image/components";
 import { Icon } from "astro-icon";
-import astronautImage from "~/assets/astronaut.png";
-import HeroImage from "~/components/hero-image.astro";
 import Starfield from "~/components/starfield.astro";
-import GitHubCorner from "./github-corner.astro";
-
-const widths = [450, 800];
-const sizes = "(min-width: 640px) 42vw, 67vw";
 ---
 
 <section class="relative h-full bg-black">
   <Starfield />
-  <GitHubCorner />
   <div id="splash-bg-fallback" class="absolute inset-0 hidden opacity-40">
-    <HeroImage />
+    <div class="h-full w-full bg-gradient-to-br from-cyan-900/50 via-violet-900/50 to-emerald-900/50"></div>
   </div>
   <div class="relative grid h-full place-items-center sm:grid-cols-2">
     <h2
-      class="flex flex-col gap-2 self-end sm:gap-4 sm:self-auto sm:justify-self-end"
+      class="flex flex-col gap-2 self-end sm:gap-4 sm:self-auto sm:justify-self-end px-8"
     >
-      <Icon name="logomark" class="h-24 text-white md:h-32" />
+      <Icon name="fitme-logo" class="h-24 text-white md:h-32" />
       <div
-        class="gradient-text text-center font-extrabold tracking-tighter text-8xl"
+        class="gradient-text text-center font-extrabold tracking-tighter text-7xl md:text-8xl"
       >
-        Build fast
-        <br /> websites,
-        <br /> faster.
+        AI-Driven
+        <br />Wellness
+        <br />Ecosystem
+      </div>
+      <p class="text-center text-gray-300 text-lg md:text-xl max-w-md mt-4">
+        Enterprise-grade fitness tracking, nutrition coaching, and mental health support powered by gRPC microservices.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 mt-6 justify-center">
+        <a
+          href="https://github.com/your-repo/fitme-grpc"
+          class="flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-black font-semibold px-6 py-3 rounded-lg transition-colors"
+        >
+          <Icon pack="mdi" name="github" class="h-5 w-5" />
+          View on GitHub
+        </a>
+        <a
+          href="#features"
+          class="flex items-center justify-center gap-2 border-2 border-white/30 hover:border-white/60 text-white font-semibold px-6 py-3 rounded-lg transition-colors"
+        >
+          <Icon pack="mdi" name="arrow-down" class="h-5 w-5" />
+          Explore Features
+        </a>
       </div>
     </h2>
     <div
-      id="astronaut"
-      class="w-2/3 max-w-3xl self-start sm:w-10/12 sm:self-auto sm:justify-self-start"
+      id="hero-visual"
+      class="w-2/3 max-w-3xl self-start sm:w-10/12 sm:self-auto sm:justify-self-start flex items-center justify-center"
     >
-      <Picture
-        class="object-cover w-full h-full"
-        src={astronautImage}
-        widths={widths}
-        sizes={sizes}
-        loading="eager"
-        alt="A floating astronaut in a space suit"
-      />
+      <!-- Abstract wellness visualization -->
+      <div class="relative">
+        <div class="absolute inset-0 bg-gradient-to-r from-cyan-500/20 via-violet-500/20 to-emerald-500/20 blur-3xl rounded-full"></div>
+        <svg class="w-80 h-80 md:w-96 md:h-96" viewBox="0 0 200 200">
+          <!-- Animated pulse rings -->
+          <circle cx="100" cy="100" r="60" fill="none" stroke="url(#hero-gradient)" stroke-width="2" class="pulse-ring" />
+          <circle cx="100" cy="100" r="75" fill="none" stroke="url(#hero-gradient)" stroke-width="1" class="pulse-ring delay-1" />
+          <circle cx="100" cy="100" r="90" fill="none" stroke="url(#hero-gradient)" stroke-width="0.5" class="pulse-ring delay-2" />
+          
+          <!-- Heart rate line -->
+          <path d="M20 100 L40 100 L50 80 L60 120 L70 90 L80 110 L90 100 L180 100" stroke="url(#hero-gradient)" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" class="heartbeat-line" />
+          
+          <!-- Central core -->
+          <circle cx="100" cy="100" r="30" fill="url(#hero-gradient)" opacity="0.8" />
+          
+          <!-- Orbiting data points -->
+          <circle cx="100" cy="40" r="5" fill="#06B6D4" class="orbit" />
+          <circle cx="160" cy="100" r="5" fill="#8B5CF6" class="orbit delay-1" />
+          <circle cx="100" cy="160" r="5" fill="#10B981" class="orbit delay-2" />
+          
+          <defs>
+            <linearGradient id="hero-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#06B6D4"/>
+              <stop offset="50%" style="stop-color:#8B5CF6"/>
+              <stop offset="100%" style="stop-color:#10B981"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
     </div>
   </div>
 </section>
@@ -58,19 +90,81 @@ const sizes = "(min-width: 640px) 42vw, 67vw";
     0% {
       transform: translate3d(0, 0, 0);
     }
-
     100% {
-      transform: translate3d(0, 30px, 0);
+      transform: translate3d(0, 20px, 0);
     }
   }
 
-  #astronaut {
-    animation: float linear 2.5s infinite alternate;
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 0.3;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.8;
+      transform: scale(1.05);
+    }
+  }
+
+  @keyframes heartbeat {
+    0%, 100% {
+      stroke-dashoffset: 0;
+    }
+    50% {
+      stroke-dashoffset: 20;
+    }
+  }
+
+  @keyframes orbit {
+    0% {
+      transform: rotate(0deg) translateX(0);
+    }
+    100% {
+      transform: rotate(360deg) translateX(0);
+    }
+  }
+
+  #hero-visual {
+    animation: float linear 3s infinite alternate;
+  }
+
+  .pulse-ring {
+    animation: pulse 2s ease-in-out infinite;
+    transform-origin: center;
+  }
+
+  .pulse-ring.delay-1 {
+    animation-delay: 0.3s;
+  }
+
+  .pulse-ring.delay-2 {
+    animation-delay: 0.6s;
+  }
+
+  .heartbeat-line {
+    stroke-dasharray: 200;
+    animation: heartbeat 1.5s ease-in-out infinite;
+  }
+
+  .orbit {
+    transform-origin: 100px 100px;
+    animation: orbit 8s linear infinite;
+  }
+
+  .orbit.delay-1 {
+    animation-delay: -2.5s;
+  }
+
+  .orbit.delay-2 {
+    animation-delay: -5s;
   }
 
   @media (prefers-reduced-motion: reduce) {
-    #astronaut {
-      @apply animate-none;
+    #hero-visual,
+    .pulse-ring,
+    .heartbeat-line,
+    .orbit {
+      animation: none;
     }
 
     :global(#starfield) {

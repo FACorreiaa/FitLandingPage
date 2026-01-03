@@ -1,0 +1,76 @@
+---
+import { Icon } from "astro-icon";
+import ContentSection from "~/components/content-section.astro";
+import type { TechItem } from "~/types";
+
+const backend: Array<TechItem> = [
+  { title: "Go", icon: "mdi:language-go" },
+  { title: "gRPC", icon: "mdi:api" },
+  { title: "Protobuf", icon: "mdi:code-braces" },
+];
+
+const database: Array<TechItem> = [
+  { title: "PostgreSQL", icon: "mdi:database" },
+  { title: "TimescaleDB", icon: "mdi:chart-timeline" },
+  { title: "Redis", icon: "mdi:memory" },
+];
+
+const infrastructure: Array<TechItem> = [
+  { title: "Docker", icon: "mdi:docker" },
+  { title: "Kubernetes", icon: "mdi:kubernetes" },
+  { title: "Kafka", icon: "mdi:message-flash" },
+];
+
+const observability: Array<TechItem> = [
+  { title: "Prometheus", icon: "mdi:chart-bar" },
+  { title: "Grafana", icon: "mdi:monitor-dashboard" },
+  { title: "Jaeger", icon: "mdi:radar" },
+];
+
+const integrations: Array<TechItem> = [
+  { title: "Apple Health", icon: "mdi:apple" },
+  { title: "Oura", icon: "mdi:ring" },
+  { title: "Whoop", icon: "mdi:watch" },
+  { title: "FHIR", icon: "mdi:hospital" },
+];
+
+interface TechGroup {
+  title: string;
+  items: Array<TechItem>;
+  color: string;
+}
+
+const techGroups: Array<TechGroup> = [
+  { title: "Backend", items: backend, color: "text-cyan-400" },
+  { title: "Database", items: database, color: "text-violet-400" },
+  { title: "Infrastructure", items: infrastructure, color: "text-blue-400" },
+  { title: "Observability", items: observability, color: "text-amber-400" },
+  { title: "Integrations", items: integrations, color: "text-emerald-400" },
+];
+---
+
+<ContentSection title="Technology Stack" id="tech-stack">
+  <Fragment slot="lead">
+    Built with <span class="text-primary">battle-tested technologies</span> for high availability
+    and <span class="text-primary">deep observability</span> at every layer.
+  </Fragment>
+  <div class="flex flex-col gap-8 w-full max-w-4xl">
+    {
+      techGroups.map(({ title, items, color }) => (
+        <div class="flex flex-col gap-4">
+          <h3 class={`font-bold text-lg ${color}`}>{title}</h3>
+          <ul class="flex flex-wrap gap-4 justify-center">
+            {
+              items.map(({ title: itemTitle, icon }) => (
+                <li class="flex items-center gap-3 border border-default bg-offset px-5 py-3 rounded-lg hover:border-primary/50 transition-colors">
+                  <Icon name={icon} class="h-6 w-6" />
+                  <span class="font-medium">{itemTitle}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      ))
+    }
+  </div>
+</ContentSection>

@@ -3,28 +3,27 @@ import { Icon } from "astro-icon";
 import ContentSection from "~/components/content-section.astro";
 ---
 
-<ContentSection title="Just ship less" id="intro">
-  <Icon slot="eyebrow" name="logomark" class="h-32" />
+<ContentSection title="Enterprise-Grade Wellness" id="intro">
+  <Icon slot="eyebrow" name="fitme-logo" class="h-32" />
   <Fragment slot="lead">
-    Astro is a new kind of site builder for the
-    <span class="text-primary">modern</span> web.
-    <span class="text-primary">Lightning-fast</span>
-    performance meets <span class="text-primary">powerful</span> developer experience.
+    FitME-gRPC is an <span class="text-primary">enterprise rewrite</span> of the original FitME REST API.
+    Built with <span class="text-primary">Go and gRPC</span>, it delivers
+    <span class="text-primary">microservice-based</span> fitness, nutrition, and mental health services.
   </Fragment>
   <div class="grid grid-cols-1 gap-2 sm:grid-cols-2">
     <a
-      href="https://docs.astro.build/"
-      class="flex items-center justify-center gap-3 border-2 border-current px-6 py-4"
+      href="https://github.com/your-repo/fitme-grpc"
+      class="flex items-center justify-center gap-3 border-2 border-current px-6 py-4 hover:bg-primary/10 transition-colors"
     >
-      <Icon pack="mdi" name="telescope" class="h-8" />
-      <span>Read the docs</span>
+      <Icon pack="mdi" name="github" class="h-8" />
+      <span>View Source</span>
     </a>
     <a
-      href="https://astro.new/"
-      class="flex items-center justify-center gap-3 border-2 border-current px-6 py-4"
+      href="#tech-stack"
+      class="flex items-center justify-center gap-3 border-2 border-current px-6 py-4 hover:bg-primary/10 transition-colors"
     >
-      <Icon pack="mdi" name="rocket" class="h-8" />
-      <span>Try it out</span>
+      <Icon pack="mdi" name="layers-triple" class="h-8" />
+      <span>Tech Stack</span>
     </a>
   </div>
 </ContentSection>
