@@ -52,12 +52,12 @@ const features: Array<FeatureItem> = [
   <ul class="grid max-w-6xl grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1">
     {
       features.map(({ title, description, icon }) => (
-        <li class="flex flex-col items-center gap-4 border border-default bg-offset p-6 hover:bg-offset/80 transition-colors">
-          <div class="h-16 w-16 rounded-full border-2 border-primary bg-primary/10 p-3 flex items-center justify-center">
+        <li class="glass-card flex flex-col items-center gap-4 p-6 text-center">
+          <div class="h-16 w-16 rounded-full border-2 border-primary bg-primary/10 p-3 flex items-center justify-center shadow-inner shadow-primary/20">
             <Icon name={icon} class="h-8 w-8 text-primary" />
           </div>
-          <p class="text-center font-extrabold text-xl">{title}</p>
-          <p class="text-center text-offset text-sm">{description}</p>
+          <p class="font-extrabold text-xl">{title}</p>
+          <p class="text-offset text-sm leading-relaxed">{description}</p>
         </li>
       ))
     }

@@ -1,2 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @import "global.css";
 @import "theme.css";
+
+@layer components {
+    .glass-card {
+        @apply relative overflow-hidden rounded-xl border border-default bg-gray-100/50 dark:bg-slate-800/50 backdrop-blur-md transition-all duration-300;
+    }
+
+    .glass-card:hover {
+        @apply -translate-y-1 border-cyan-500/50 dark:border-cyan-400/50 shadow-2xl shadow-cyan-500/10 dark:shadow-cyan-400/10;
+    }
+}

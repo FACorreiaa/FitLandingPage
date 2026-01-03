@@ -51,15 +51,15 @@ const microservices: Array<MicroserviceItem> = [
   <ul class="grid max-w-6xl grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
     {
       microservices.map(({ title, description, icon, color }) => (
-        <li class="group relative overflow-hidden rounded-xl border border-default bg-offset p-6 hover:border-primary/50 transition-colors">
-          <div class={`absolute inset-0 bg-gradient-to-br ${color} opacity-0 group-hover:opacity-5 transition-opacity`}></div>
+        <li class="glass-card group p-6">
+          <div class={`absolute -right-12 -top-12 h-32 w-32 rounded-full bg-gradient-to-br ${color} opacity-10 blur-2xl group-hover:opacity-20 transition-opacity duration-500`}></div>
           <div class="relative flex flex-col items-start gap-4">
-            <div class={`flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br ${color} text-white`}>
+            <div class={`flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br ${color} text-white shadow-lg`}>
               <Icon name={icon} class="h-7 w-7" />
             </div>
             <div>
               <p class="font-bold text-lg">{title}</p>
-              <p class="text-offset text-sm mt-1">{description}</p>
+              <p class="text-offset text-sm mt-1 leading-relaxed">{description}</p>
             </div>
           </div>
         </li>
